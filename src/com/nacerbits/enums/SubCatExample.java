@@ -2,7 +2,7 @@ package com.nacerbits.enums;
 
 import java.util.*;
 
-public final class DrinkEnumExample {
+public final class SubCatExample {
 
     public interface CategoryInterface {
         String getDisplayableType();
@@ -49,44 +49,41 @@ public final class DrinkEnumExample {
         }
     }
 
-    public DrinkEnumExample() {
+    public SubCatExample() {
         super();
     }
 
     public static void main(String[] args) {
-        // populate coffee map
+        // populate A map
         Map<Enum, List<Enum>> map = new HashMap<Enum, List<Enum>>();
-        List<Enum> coffeeList = new ArrayList<Enum>();
-        coffeeList.add(SubCategory.A1);
-        coffeeList.add(SubCategory.A2);
-        map.put(Category.A, coffeeList);
-        // populate tea map
-        List<Enum> teaList = new ArrayList<Enum>();
-        teaList.add(SubCategory.B3);
-        teaList.add(SubCategory.B2);
-        teaList.add(SubCategory.B1);
-        map.put(Category.B, teaList);
-
+        List<Enum> categoryAList = new ArrayList<Enum>();
+        categoryAList.add(SubCategory.A1);
+        categoryAList.add(SubCategory.A2);
+        map.put(Category.A, categoryAList);
+        // populate B map
+        List<Enum> categoryBList = new ArrayList<Enum>();
+        categoryBList.add(SubCategory.B1);
+        categoryBList.add(SubCategory.B2);
+        categoryBList.add(SubCategory.B3);
+        map.put(Category.B, categoryBList);
         // Using iterators
         Iterator<Map.Entry<Enum, List<Enum>>> itr = map.entrySet().iterator();
         while (itr.hasNext()) {
             Map.Entry<Enum, List<Enum>> entry = itr.next();
             System.out.println("\nKey = " + entry.getKey());
-
-            Arrays.sort(entry.getValue().toArray());
             for (int i = 0; i < entry.getValue().size(); i++) {
                 System.out.print(" " + entry.getValue().get(i) + " ");
             }
         }
     }
 
-    private static void displayDrink(SubCategory drink) {
-        displayType(drink);
+    private static void displaySubCategory(SubCategory subCategory) {
+        displayCategory(subCategory);
         System.out.print(" - ");
-        System.out.print(drink.getLabel());
+        System.out.print(subCategory.getLabel());
     }
 
-    private static void displayType(CategoryInterface displayable) {
+    private static void displayCategory(CategoryInterface displayable) {
         System.out.print(displayable.getDisplayableType());
     }
 }
